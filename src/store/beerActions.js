@@ -4,7 +4,11 @@ import { config } from '../config/breweryDB_config'
 
 export const getBeers = () => {
     return (dispatch) => {
-        return axios.get(config.url + config.key)
+        return axios.get(config.url + config.key, {
+        headers: {
+          'Access-Control-Allow-Origin': true,
+        },
+        })
             .then((res) => {
                 console.log(res.data)
                 dispatch({
