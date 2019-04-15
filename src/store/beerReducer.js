@@ -1,6 +1,6 @@
 
 const initState = [
-    {
+   /* {
         "id": "c4f2KE",
         "name": "'Murican Pilsner",
         "nameDisplay": "'Murican Pilsner",
@@ -249,14 +249,14 @@ const initState = [
             "createDate": "2012-03-21 20:06:46",
             "updateDate": "2015-04-07 15:28:43"
         }
-    }
+    }*/
 ]
 
 const beerReducer = (state = initState, action) => {
     switch (action.type) {
         case 'GET_BEERS':
             console.log('Get Beers', action)
-            return state;
+            return action.beers;
         case 'GET_BEERS_ERROR':
             console.log('Get Beers error', action.err)
             return state;

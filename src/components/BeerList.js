@@ -7,7 +7,7 @@ class BeerList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            beers: [],
+            beers: this.props.beers,
             filtered: [],
             search: ""
         }
@@ -16,9 +16,9 @@ class BeerList extends Component {
     }
    componentDidMount() {
        console.log(this.props)
-  this.setState({
-    beers: this.props.beers
-  });
+//   this.setState({
+//     beers: this.props.beers
+//   });
 }
 handleChange = e => {
     this.setState({
