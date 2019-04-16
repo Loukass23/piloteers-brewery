@@ -1,39 +1,26 @@
 import React, { Component } from 'react'
 import BeerList from '../components/BeerList'
 import { Link } from 'react-router-dom'
-import { getBeers } from '../store/beerActions'
+import { getBeers, setBeersLoading } from '../store/beerActions'
 import { connect } from 'react-redux'
-
-import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 
 
 class Beer extends Component {
     componentDidMount() {
         this.props.getBeers()
+        this.props.setBeersLoading()
     }
     render() {
         const { beers } = this.props;
-        return (
-            <div className="cities container">
-                <div className="row valign-wrapper">
-                    <div style={{ paddingTop: '10px' }} className="col s1" >
-                        <Link to='/'>
-                            <div className="btn-floating btn-medium waves-effect waves-light red lighten-3"><i className="material-icons">home</i></div>
-                        </Link>
-                    </div>
-                    <h4 className="col s11" >
-                        Beers
-                        </h4>
 
-                </div>
+        return (
+            <div className="container">
+                <h1>Piloteers Beer List</h1>
                 <div className="">
-                    <BeerList beers={beers} />
+                    <BeerList beers={beers.beers} loading={beers.loading} />
                 </div>
-                <div className="row">
-                    <Link to='/createCity'><div className="btn-floating btn-large waves-effect waves-light red lighten-3">
-                        <i className="material-icons">add</i></div></Link>
-                </div>
+
             </div>
 
         )
@@ -48,7 +35,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getBeers: () => dispatch(getBeers())
+        getBeers: () => dispatch(getBeers()),
+        setBeersLoading: () => dispatch(setBeersLoading())
     }
 }
 

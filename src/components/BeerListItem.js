@@ -4,20 +4,24 @@ import React from 'react'
 
 const BeerListItem = ({ beer }) => {
     return (
-        <div className='card horizontal small' >
-            <div className="card-stacked">
-                <div className="card-content">
-                    <span className="card-title">{beer.name}</span>
-                </div>
-                <div className="card-action">
-                    <p>ABV : {beer.abv}</p>
-                </div>
-            </div>
-            <div className='card-image'>
-                {beer.labels && <img src={beer.labels.medium} alt="" />}
-            </div>
+        <li className="collection-item avatar">
+            <div className="row ">
+                <div className="col ">
+                    {beer.labels && <img className="circle" src={beer.labels.medium} alt="" />}
 
-        </div>
+                </div>
+                <div className="col title valign-wrapper">
+                    {beer.name}
+                </div>
+                <div className="col valign-wrapper ">
+                    ABV : {beer.abv}
+                </div>
+                <div className="col valign-wrapper">
+                    IBU : {beer.ibu}
+                </div>
+            </div>
+        </li>
+
 
 
     )
