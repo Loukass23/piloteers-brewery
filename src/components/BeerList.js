@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import BeerListItem from './BeerListItem'
 import Loader from 'react-loader-spinner'
@@ -33,6 +34,12 @@ class BeerList extends Component {
         let filtered = this.props.beers.filter(beer => beer.name.toUpperCase().match(e.target.value.toUpperCase()))
         this.setState({ filteredBeers: filtered })
     }
+    redirect(beer) {
+        console.log(beer)
+        return (
+            <Redirect push to={'/beer/' + beer.id} />
+        );
+    }
 
     render() {
         const { beers, loading } = this.props
@@ -43,22 +50,34 @@ class BeerList extends Component {
         if (loading) {
             beerList = <Loader
                 type="Puff"
-                color="#00BFFF"
+                color="#4db6ac"
                 height="100"
                 width="100"
             />;
         } else {
             let beersFilter = beers.filter(beer => beer.name.toUpperCase().match(this.state.search.toUpperCase()))
+            let options = {
+                onRowClick: (beer) => {
+                    return <Redirect push to={'/beer/' + beer.id} />
+                }
+            }
+            function buttonFormatter(cell, row) {
+                return <Link to={'/beer/' + row.id}> <button className="btn-floating btn-medium  waves-effect waves-light">
+                    <i className="material-icons">info</i></button></Link>;
+            }
             return (
-                <div className="container">
+                <div className="container-fluid">
                     <div>
                         <input type="text" name="search" value={this.state.search} onChange={this.handleChange} className="input" placeholder="Search by name..." />
 
                     </div>
-                    <BootstrapTable data={beersFilter} striped hover>
+
+                    <BootstrapTable options={options} data={beersFilter} striped hover expandComponent={this.expandComponent}>
                         <TableHeaderColumn width={'60%'} isKey dataField='name' dataSort={true}>Name</TableHeaderColumn>
                         <TableHeaderColumn width={'10%'} dataField='abv' dataSort={true}>ABV</TableHeaderColumn>
                         <TableHeaderColumn width={'10%'} dataField='ibu' dataSort={true}>IBU</TableHeaderColumn>
+                        <TableHeaderColumn dataField="button" dataFormat={buttonFormatter}></TableHeaderColumn>
+
                     </BootstrapTable>
                     {/* {beersFilter.map(beer => {
                         return (

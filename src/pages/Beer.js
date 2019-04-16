@@ -8,8 +8,12 @@ import { Redirect } from 'react-router-dom'
 
 class Beer extends Component {
     componentDidMount() {
-        this.props.getBeers()
-        this.props.setBeersLoading()
+        console.log(this.props.beers.beers)
+        if (this.props.beers.beers.length === 0) {
+            this.props.getBeers()
+            this.props.setBeersLoading()
+        }
+
     }
     render() {
         const { beers } = this.props;
@@ -35,6 +39,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+
         getBeers: () => dispatch(getBeers()),
         setBeersLoading: () => dispatch(setBeersLoading())
     }
