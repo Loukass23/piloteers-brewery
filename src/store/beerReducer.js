@@ -1,6 +1,6 @@
 
 const initState = {
-    beers: [],
+    beers: {},
     loading: true
 }
 

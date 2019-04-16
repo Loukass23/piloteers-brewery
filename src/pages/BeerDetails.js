@@ -1,31 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-//import './city.css'
-const handleOnClick = () => {
-    this.context.router.push('/');
-}
+
 
 
 const BeerListItem = ({ beer, history }) => {
     console.log(beer)
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        history.push('/')
+    if (!beer) {
+        return <Redirect to='/beer' />
     }
-
+    const handleReturn = (e) => {
+        e.preventDefault();
+        history.push('/beer')
+    }
+    if (!beer) handleReturn()
     return (
         <div className="container">
 
             <div className="row valign-wrapper">
                 <div style={{ paddingTop: '10px' }} className="col s1" >
                     <button className="btn-floating btn-medium  waves-effect waves-light">
-                        <i onClick={handleSubmit} className="material-icons">more_vert</i></button>
-
+                        <i onClick={handleReturn} className=" white-text lighten-3 fas fa-2x fa-arrow-left " /></button>
                 </div>
-
             </div>
             <div class="card large teal lighten-2">
                 <div className='card-image'>
@@ -76,13 +73,18 @@ const BeerListItem = ({ beer, history }) => {
     )
 }
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.beers)
-    const beerId = ownProps.match.params.id
-    const beerList = state.beers.beers
-    return {
-        beer: beerList.find((beer) => beer.id === beerId),
-        beers: state.beers,
+    if (Object.getOwnPropertyNames(state.beers.beers).length === 0) {
+        return <Redirect to='/beer' />
     }
+    else {
+        const beerId = ownProps.match.params.id
+        const beerList = state.beers.beers
+        return {
+            beer: beerList.find((beer) => beer.id === beerId),
+            beers: state.beers,
+        }
+    }
+
 }
 
 export default connect(mapStateToProps)(BeerListItem)

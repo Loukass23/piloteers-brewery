@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-import BeerListItem from './BeerListItem'
 import Loader from 'react-loader-spinner'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
