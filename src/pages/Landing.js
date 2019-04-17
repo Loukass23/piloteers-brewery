@@ -18,7 +18,7 @@ export default function Landing() {
                         Hello, <br />
                         This demo app was made using React.js to fit Piloteers' stack. <br />
                         It uses Materialize front end framework and Redux store. <br />
-                        It is designed to only fetch the data once and stores it as you look through beers until the browser is refreshed.<br />
+                        It is designed to only fetch the data only when needed.<br />
                         Please let me know if you have any comments or questions.<br />
                         <br />
                         Best regards,<br />

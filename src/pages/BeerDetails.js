@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import moment from 'moment'
 
 
 
@@ -24,14 +25,23 @@ const BeerListItem = ({ beer, history }) => {
                 <p >Back to the beer list</p>
             </div>
             <div style={{ padding: 10 }} className="z-depth-4 card white ">
-                <h2 className='teal-text text-lighten-2'>
-                    {beer.name}</h2>
+                <div className="row">
+
+                    {beer.createDate && <p className="col s2"><i className='material-icons  teal-text lighten-2 '>add</i>created {moment(beer.createDate).format('ll')}</p>}
+                    <h3 className=' col s8 teal-text text-lighten-2'>
+                        {beer.name}
+                    </h3>
+                    {beer.status === "verified" && <p className="col s2"><i className='material-icons teal-text lighten-2 '>verified_user</i>verified</p>}
+
+                </div>
+
+
                 {beer.labels && <img height="100px" className='circle' src={beer.labels.large} alt="" />}
                 <div className="card-content">
                     <p className=''>{beer.description}</p></div>
 
 
-                <div className='row teal-text text-lighten-2'>
+                <div className='card-action row teal-text text-lighten-2'>
                     <div className="col s3">{beer.abv && <p>  ABV : {beer.abv}</p>}</div>
                     <div className="col s3"> {beer.ibu && <p>IBU : {beer.ibu}</p>}</div>
                     <div className="col s3">
