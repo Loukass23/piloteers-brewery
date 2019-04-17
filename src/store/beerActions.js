@@ -10,7 +10,6 @@ export const setBeersLoading = () => {
     };
 };
 export const getBeers = (page) => {
-    console.log(_url + page)
     return (dispatch) => {
         return axios.get(_url + page, {
             headers: {

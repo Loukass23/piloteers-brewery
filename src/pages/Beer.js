@@ -12,6 +12,7 @@ class Beer extends Component {
         this.state = {
             page: 1,
             beers: {},
+            lastPage: 23,
         }
 
     }
@@ -22,13 +23,49 @@ class Beer extends Component {
         }
 
     }
-    refreshList = () => {
+    refreshList = (page) => {
 
-        let page = this.state.page + 1
-        console.log(page)
-        this.setState({ page })
         this.props.getBeers(page)
         this.props.setBeersLoading()
+    }
+    handleNext = () => {
+        let page = this.state.page
+        if (page !== this.state.lastPage) page++
+        this.setState({ page })
+        this.refreshList(page)
+    }
+    handleLast = () => {
+        let page = 23
+        this.setState({ page })
+        this.refreshList(page)
+    }
+    handleFirst = () => {
+        let page = 1
+        this.setState({ page })
+        this.refreshList(page)
+    }
+    handlePrevious = () => {
+        let page = this.state.page
+        if (page !== 1) page--
+        this.setState({ page })
+        this.refreshList(page)
+    }
+
+    handlePage = (e) => {
+        let page = parseInt(e.target.id)
+        console.log(page)
+        this.setState({ page })
+        this.refreshList(page)
+
+    }
+    pages() {
+        const page = this.state.page
+        let pages = [page - 2, page - 1, page, page + 1, page + 2]
+        return pages.map(p => {
+            if (p < 1 || p > 23) return p = null
+            else return p
+        })
+
     }
     render() {
         const { beers } = this.props;
@@ -42,18 +79,27 @@ class Beer extends Component {
                 </div>
 
                 <div style={{ padding: 5 }} className="container">
-                    <div className="col s1 valign-wrapper">
-                        <Link to='/'>
-                            <button style={{ margin: 5 }} id="beer-button" className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">home</i></button>
-                        </Link>
-                        <p > Back Home</p>
-                    </div>
-                    <div className="col s1 valign-wrapper">
-                        <h2>{this.state.page}</h2>
+                    <div style={{ margin: 5 }} className="row center-align">
+                        <div className="col s4 valign-wrapper">
+                            <Link to='/'>
+                                <button style={{ margin: 5 }} id="beer-button" className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">home</i></button>
+                            </Link>
+                            <p > Back Home</p>
+                        </div>
+                        <div className="col s8">
+                            <ul className="pagination">
+                                <li className="waves-effect"><a onClick={this.handleFirst} href="#!"><i className="material-icons">fast_rewind</i></a></li>
+                                <li className="waves-effect"><a onClick={this.handlePrevious} href="#!"><i className="material-icons">chevron_left</i></a></li>
+                                {this.pages()[0] && <li className="waves-effect"><a id={this.pages()[0]} onClick={this.handlePage} href="#!">{this.pages()[0]}</a></li>}
+                                {this.pages()[1] && <li className="waves-effect"><a id={this.pages()[1]} onClick={this.handlePage} href="#!">{this.pages()[1]}</a></li>}
+                                <li className="active teal lighten-2"><a href="#!">{this.pages()[2]}</a></li>
+                                {this.pages()[3] && <li className="waves-effect"><a id={this.pages()[3]} onClick={this.handlePage} href="#!">{this.pages()[3]}</a></li>}
+                                {this.pages()[4] && <li className="waves-effect"><a id={this.pages()[4]} onClick={this.handlePage} href="#!">{this.pages()[4]}</a></li>}
+                                <li className="waves-effect"><a onClick={this.handleNext} href="#!"><i className="material-icons">chevron_right</i></a></li>
+                                <li className="waves-effect"><a onClick={this.handleLast} href="#!"><i className="material-icons">fast_forward</i></a></li>
+                            </ul>
+                        </div>
 
-                        <button style={{ margin: 5 }} onClick={this.refreshList} id="beer-button" className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">add</i></button>
-
-                        <p > Next page</p>
                     </div>
                     <div style={{ marginTop: 10, padding: 10 }} className="z-depth-4">
                         <BeerList beers={beers.beers} loading={beers.loading} />
