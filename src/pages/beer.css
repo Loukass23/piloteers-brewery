@@ -4,3 +4,11 @@
     margin: 2.8rem 0 1.68rem 0;
     margin-top: 0;
 }
+
+#beer-link :hover {
+    background-color: blue;
+}
+
+#beer-button :hover {
+    background-color: blue;
+}

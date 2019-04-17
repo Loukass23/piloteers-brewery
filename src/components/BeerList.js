@@ -61,7 +61,7 @@ class BeerList extends Component {
                 }
             }
             function buttonFormatter(cell, row) {
-                return <Link to={'/beer/' + row.id}> <button className="btn-floating btn-medium  waves-effect waves-light">
+                return <Link to={'/beer/' + row.id}> <button id="beer-button" className="btn-floating btn-medium  waves-effect waves-light">
                     <i className="material-icons">info</i></button></Link>;
             }
             return (

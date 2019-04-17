@@ -27,8 +27,9 @@ class Beer extends Component {
                 </div>
                 <div className="col s1 valign-wrapper">
                     <Link to='/'>
-                        <div className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">home</i></div>
+                        <button style={{ margin: 5 }} id="beer-button" className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">home</i></button>
                     </Link>
+                    <p >Back Home</p>
                 </div>
                 <div className="container">
                     <BeerList beers={beers.beers} loading={beers.loading} />
