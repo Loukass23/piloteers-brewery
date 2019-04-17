@@ -1,3 +1,11 @@
+Coding task for Piloteers
+A simple app fectching a beer list API.
+was made using React.js to fit Piloteers stack.
+It uses Materialize front end framework and Redux store. 
+It is designed to only fetch the data once. It is stored it as you look through beers untill browser is refreshed.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

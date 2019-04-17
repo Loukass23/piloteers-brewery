@@ -6,9 +6,6 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 
-
-
-
 class BeerList extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +22,6 @@ class BeerList extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(this.state.search)
     }
     handleSearch = e => {
 
@@ -34,7 +30,6 @@ class BeerList extends Component {
         this.setState({ filteredBeers: filtered })
     }
     redirect(beer) {
-        console.log(beer)
         return (
             <Redirect push to={'/beer/' + beer.id} />
         );
@@ -42,8 +37,6 @@ class BeerList extends Component {
 
     render() {
         const { beers, loading } = this.props
-
-        console.log(this.props)
         let beerList;
 
         if (loading) {
@@ -76,34 +69,15 @@ class BeerList extends Component {
                         <TableHeaderColumn width={'10%'} dataField='abv' dataSort={true}>ABV</TableHeaderColumn>
                         <TableHeaderColumn width={'10%'} dataField='ibu' dataSort={true}>IBU</TableHeaderColumn>
                         <TableHeaderColumn dataField="button" dataFormat={buttonFormatter}></TableHeaderColumn>
-
                     </BootstrapTable>
-                    {/* {beersFilter.map(beer => {
-                        return (
-                            <Link to={'/beer/' + beer.name} key={beer.id}>
-                                <ul className="collection with-header">
-
-                                    <BeerListItem beer={beer} />
-                                </ul>
-                            </Link>
-                        )
-                    })
-                    } */}
-
-
                 </div>
             )
         }
 
-
         return (
-            <>
-
-                <div>
-                    {beerList}
-                </div>
-
-            </>
+            <div>
+                {beerList}
+            </div>
         )
     }
 }

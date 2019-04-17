@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom'
 
 
 const BeerListItem = ({ beer, history }) => {
-    console.log(beer)
     if (!beer) {
         return <Redirect to='/beer' />
     }
@@ -47,6 +46,9 @@ const BeerListItem = ({ beer, history }) => {
                 <br />
 
                 <div className='card-reveal black-text' id='card-reveal'>
+                    <span className='center-align itinerary-list-item-title activator card-title'>
+                        <i className='material-icons right '>close</i>
+                    </span>
                     {beer.glass &&
                         <div className="card-content">
                             <h4 className="teal-text text-lighten-2">Glass details</h4>
@@ -59,11 +61,6 @@ const BeerListItem = ({ beer, history }) => {
                             <p>{beer.style.description}</p>
                         </div>
                     }
-                    <span className='center-align itinerary-list-item-title activator card-title'>
-                        <i className='material-icons right '>close</i>
-                    </span>
-
-
 
                 </div>
             </div>
@@ -81,10 +78,8 @@ const mapStateToProps = (state, ownProps) => {
         const beerList = state.beers.beers
         return {
             beer: beerList.find((beer) => beer.id === beerId),
-            beers: state.beers,
         }
     }
-
 }
 
 export default connect(mapStateToProps)(BeerListItem)

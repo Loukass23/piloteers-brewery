@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Beer from './Beer'
 
 export default function Landing() {
     return (
@@ -13,25 +12,20 @@ export default function Landing() {
 
 
             <div className="container">
-                <Link to='/beer'>
-                    <div id="beer-link" className="card py-5 teal lighten-2 z-depth-4">
-                        <h4 className=" white-text ">BEER LIST</h4>
 
-                    </div>
-                </Link>
                 <div style={{ padding: 20 }} className="card py-5 white lighten-2 z-depth-4">
                     <p className=" black-text ">
                         Hello, <br />
-                        This demo app was made using React.js to fit Piloteers stack. <br />
+                        This demo app was made using React.js to fit Piloteers' stack. <br />
                         It uses Materialize front end framework and Redux store. <br />
-                        It is designed to only fetch the data once. It is stored it as you look through beers untill browser is refreshed.<br />
-                        Please let me know is you have any comments or questions.<br />
+                        It is designed to only fetch the data once and stores it as you look through beers until the browser is refreshed.<br />
+                        Please let me know if you have any comments or questions.<br />
                         <br />
                         Best regards,<br />
                         Lucas Dupias
      </p>
 
-                    <p>  Please find bellow a links to my online portfolio is you would like to see more of my projects,
+                    <p>  Please find bellow a links to my online portfolio if you would like to see more of my projects,
                             as well as links to my LinkedIn profile and the GitHub repository for this project</p>
 
                     < ul style={{ padding: 10 }} >
@@ -51,6 +45,12 @@ export default function Landing() {
                     </ ul>
 
                 </div>
+                <Link to='/beer'>
+                    <div id="beer-link" className="card py-5 teal lighten-2 z-depth-4">
+                        <h4 className=" white-text ">BEER LIST</h4>
+
+                    </div>
+                </Link>
             </div>
         </>
     )
