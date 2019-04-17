@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { config } from '../config/breweryDB_config'
 
-//this is a workaround to bypass breweryDB CORS policy. 
+//this is a workaround to bypass breweryDB CORS policy.
 const _url = `https://cors-anywhere.herokuapp.com/${config.url + config.key}&p=`;
 
 export const setBeersLoading = () => {
@@ -10,6 +10,7 @@ export const setBeersLoading = () => {
     };
 };
 export const getBeers = (page) => {
+    // console.log(_url + page)
     return (dispatch) => {
         return axios.get(_url + page, {
             headers: {

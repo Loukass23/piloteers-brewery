@@ -53,7 +53,6 @@ class Beer extends Component {
 
     handlePage = (e) => {
         let page = parseInt(e.target.id)
-        console.log(page)
         this.setState({ page })
         this.refreshList(page)
 
@@ -74,29 +73,29 @@ class Beer extends Component {
             <>
                 <div className="row teal lighten-2 mt-0">
 
-                    <h1 id="header" className="white-text mt-0"> Beer List</h1>
+                    <h1 id="header" className="white-text"> Beer List</h1>
 
                 </div>
 
                 <div style={{ padding: 5 }} className="container">
-                    <div style={{ margin: 5 }} className="row center-align">
-                        <div className="col s4 valign-wrapper">
+                    <div style={{ marginRight: "0px" }} className="row center-align">
+                        <div className="col s6 valign-wrapper">
                             <Link to='/'>
                                 <button style={{ margin: 5 }} id="beer-button" className="btn-floating btn-medium waves-effect waves-light flat"><i className="material-icons">home</i></button>
                             </Link>
                             <p > Back Home</p>
                         </div>
-                        <div className="col s8">
+                        <div style={{ margin: 0, padding: 0 }} className="col s6">
                             <ul className="pagination">
-                                <li className="waves-effect"><a onClick={this.handleFirst} href="#!"><i className="material-icons">fast_rewind</i></a></li>
-                                <li className="waves-effect"><a onClick={this.handlePrevious} href="#!"><i className="material-icons">chevron_left</i></a></li>
-                                {this.pages()[0] && <li className="waves-effect"><a id={this.pages()[0]} onClick={this.handlePage} href="#!">{this.pages()[0]}</a></li>}
-                                {this.pages()[1] && <li className="waves-effect"><a id={this.pages()[1]} onClick={this.handlePage} href="#!">{this.pages()[1]}</a></li>}
-                                <li className="active teal lighten-2"><a href="#!">{this.pages()[2]}</a></li>
-                                {this.pages()[3] && <li className="waves-effect"><a id={this.pages()[3]} onClick={this.handlePage} href="#!">{this.pages()[3]}</a></li>}
-                                {this.pages()[4] && <li className="waves-effect"><a id={this.pages()[4]} onClick={this.handlePage} href="#!">{this.pages()[4]}</a></li>}
-                                <li className="waves-effect"><a onClick={this.handleNext} href="#!"><i className="material-icons">chevron_right</i></a></li>
-                                <li className="waves-effect"><a onClick={this.handleLast} href="#!"><i className="material-icons">fast_forward</i></a></li>
+                                <li id="beer" className="waves-effect"><a onClick={this.handleFirst} href="#!"><i className="material-icons">fast_rewind</i></a></li>
+                                <li id="beer" className="waves-effect"><a onClick={this.handlePrevious} href="#!"><i className="material-icons">chevron_left</i></a></li>
+                                {this.pages()[0] && <li id="beer" className="waves-effect"><a id={this.pages()[0]} onClick={this.handlePage} href="#!">{this.pages()[0]}</a></li>}
+                                {this.pages()[1] && <li id="beer" className="waves-effect"><a id={this.pages()[1]} onClick={this.handlePage} href="#!">{this.pages()[1]}</a></li>}
+                                <li id="beer" className="active teal lighten-2"><a href="#!">{this.pages()[2]}</a></li>
+                                {this.pages()[3] && <li id="beer" className="waves-effect"><a id={this.pages()[3]} onClick={this.handlePage} href="#!">{this.pages()[3]}</a></li>}
+                                {this.pages()[4] && <li id="beer" className="waves-effect"><a id={this.pages()[4]} onClick={this.handlePage} href="#!">{this.pages()[4]}</a></li>}
+                                <li id="beer" className="waves-effect"><a onClick={this.handleNext} href="#!"><i className="material-icons">chevron_right</i></a></li>
+                                <li id="beer" className="waves-effect"><a onClick={this.handleLast} href="#!"><i className="material-icons">fast_forward</i></a></li>
                             </ul>
                         </div>
 

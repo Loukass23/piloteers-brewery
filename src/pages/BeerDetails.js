@@ -22,16 +22,16 @@ const BeerListItem = ({ beer, history }) => {
             <div className="row valign-wrapper ">
                 <button id="beer-button" style={{ margin: 5 }} className="btn-floating btn-medium  waves-effect waves-light ">
                     <i onClick={handleReturn} className=" white-text lighten-3 fas fa-2x fa-arrow-left  " /></button>
-                <p >Back to the beer list</p>
+                <p >Back to the Beer List</p>
             </div>
             <div style={{ padding: 10 }} className="z-depth-4 card white ">
                 <div className="row">
 
-                    {beer.createDate && <p className="col s2"><i className='material-icons  teal-text lighten-2 '>add</i>created {moment(beer.createDate).format('ll')}</p>}
+                    {beer.createDate && <p className="col s2 valign-wrapper"><i className='material-icons  teal-text lighten-2 '>add</i> {moment(beer.createDate).format('ll')}</p>}
                     <h3 className=' col s8 teal-text text-lighten-2'>
                         {beer.name}
                     </h3>
-                    {beer.status === "verified" && <p className="col s2"><i className='material-icons teal-text lighten-2 '>verified_user</i>verified</p>}
+                    {beer.status === "verified" && <p className="col s2 valign-wrapper"><i className='material-icons teal-text lighten-2 '>verified_user</i>verified</p>}
 
                 </div>
 
@@ -61,7 +61,7 @@ const BeerListItem = ({ beer, history }) => {
                     </span>
                     {beer.glass &&
                         <div className="card-content">
-                            <h4 className="teal-text text-lighten-2">Glass details</h4>
+                            <h4 className="teal-text text-lighten-2">Glass Details</h4>
                             <p>{beer.glass.name}</p>
                         </div>
                     }

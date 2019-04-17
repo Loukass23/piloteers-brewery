@@ -1,14 +1,18 @@
 #header {
     font-size: 4.2rem;
     line-height: 110%;
-    margin: 2.8rem 0 1.68rem 0;
-    margin-top: 0;
+    margin-top: 0px;
+    padding-top: 20px;
 }
 
 #beer-link :hover {
-    background-color: blue;
+    background-color: #bf360c;
 }
 
 #beer-button :hover {
-    background-color: blue;
+    background-color: #bf360c;
+}
+
+#beer :hover {
+    color: #bf360c;
 }

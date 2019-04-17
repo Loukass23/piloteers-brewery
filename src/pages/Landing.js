@@ -17,16 +17,17 @@ export default function Landing() {
                     <p className=" black-text ">
                         Hello, <br />
                         This demo app was made using React.js to fit Piloteers' stack. <br />
-                        It uses Materialize front end framework and Redux store. <br />
-                        It is designed to only fetch the data only when needed.<br />
+                        It uses Materialize frontend framework and Redux store. <br />
+                        It is designed to fetch the data only when needed.<br />
                         Please let me know if you have any comments or questions.<br />
                         <br />
                         Best regards,<br />
                         Lucas Dupias
      </p>
 
-                    <p>  Please find bellow a links to my online portfolio if you would like to see more of my projects,
-                            as well as links to my LinkedIn profile and the GitHub repository for this project</p>
+                    <p style={{ marginTop: 50 }}>  Please find below a link to my online portfolio, if you would like to see more of my projects,
+                            as well as links<br />
+                        to my LinkedIn profile and the GitHub repository for this project</p>
 
                     < ul style={{ padding: 10 }} >
                         <li>

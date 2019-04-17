@@ -53,6 +53,20 @@ class BeerList extends Component {
                     return <Redirect push to={'/beer/' + beer.id} />
                 }
             }
+            function numericSortFuncIBU(a, b, order) {
+                if (order === 'desc') {
+                    return Number(b.ibu) - Number(a.ibu);
+                } else {
+                    return Number(a.ibu) - Number(b.ibu);
+                }
+            }
+            function numericSortFuncABV(a, b, order) {
+                if (order === 'desc') {
+                    return Number(b.abv) - Number(a.abv);
+                } else {
+                    return Number(a.abv) - Number(b.abv);
+                }
+            }
             function buttonFormatter(cell, row) {
                 return <Link to={'/beer/' + row.id}> <button id="beer-button" className="btn-floating btn-medium  waves-effect waves-light">
                     <i className="material-icons">info</i></button></Link>;
@@ -61,13 +75,11 @@ class BeerList extends Component {
                 <div className="container-fluid">
                     <div>
                         <input type="text" name="search" value={this.state.search} onChange={this.handleChange} className="input" placeholder="Search by name..." />
-
                     </div>
-
                     <BootstrapTable options={options} data={beersFilter} striped hover expandComponent={this.expandComponent}>
-                        <TableHeaderColumn width={'60%'} isKey dataField='name' dataSort={true}>Name</TableHeaderColumn>
-                        <TableHeaderColumn width={'10%'} dataField='abv' dataSort={true}>ABV</TableHeaderColumn>
-                        <TableHeaderColumn width={'10%'} dataField='ibu' dataSort={true}>IBU</TableHeaderColumn>
+                        <TableHeaderColumn width={'70%'} isKey dataField='name' dataSort={true}>Name</TableHeaderColumn>
+                        <TableHeaderColumn width={'10%'} sortFunc={numericSortFuncABV} dataField='abv' dataSort={true}>ABV</TableHeaderColumn>
+                        <TableHeaderColumn width={'10%'} sortFunc={numericSortFuncIBU} dataField='ibu' dataSort={true}>IBU</TableHeaderColumn>
                         <TableHeaderColumn dataField="button" dataFormat={buttonFormatter}></TableHeaderColumn>
                     </BootstrapTable>
                 </div>
